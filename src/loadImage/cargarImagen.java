@@ -1,20 +1,21 @@
 package loadImage;
 
 import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
-
-import javax.imageio.ImageIO;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class cargarImagen {
 	
-	public BufferedImage cargar(String path) {
+	public BufferedImage cargar(URL path) {
 		BufferedImage img = null;
 
 		try 
 		{
-		    img = ImageIO.read(new File(path)); 
+		    img = ImageIO.read(path); 
 		} 
 		catch (IOException e) 
 		{
@@ -48,7 +49,15 @@ public class cargarImagen {
 		// TODO Auto-generated method stub
 		cargarImagen c = new cargarImagen();
 		
-		BufferedImage img = c.cargar("bin\\loadImage\\marsSurface.bmp");
+		URL url = null;
+		try {
+			System.out.println("downloading image....");
+			url = new URL("https://raw.githubusercontent.com/ldini/TPE_Teoria-de-la-informacion/master/bin/loadImage/marsSurface.bmp");
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		BufferedImage img = c.cargar(url);
 		
 		Vector<BufferedImage> bloques = c.getBloques(img);
 		
