@@ -62,7 +62,7 @@ public class cargarImagen {
 		URL url = null;
 		try {
 			System.out.println("downloading image....");
-			url = new URL("https://raw.githubusercontent.com/ldini/TPE_Teoria-de-la-informacion/master/bin/loadImage/marsSurface.bmp");
+			url = new URL("https://raw.githubusercontent.com/ldini/TPE_Teoria-de-la-informacion/master/marsSurface.bmp");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,6 +77,10 @@ public class cargarImagen {
 			c.crearImagen(imagen,Integer.toString(i));
 			i++;
 		}
-
+		
+		calculadorEntropia calculador = new calculadorEntropia();
+		
+		double entropia = calculador.getEntropiaSinMemoria(bloques.firstElement());
+		System.out.println("entropia " + entropia + " ");
 	}
 }
