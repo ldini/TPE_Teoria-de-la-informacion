@@ -24,14 +24,24 @@ public class cargarImagen {
 		return img;
 	}
 	
-	public Vector<BufferedImage> getBloques(BufferedImage img) {
+	public Vector<BufferedImage> getBloques(BufferedImage img, int height, int width) {
 		Vector<BufferedImage> bloques = new Vector<BufferedImage>();
-		for(int i = 0; i+500 < img.getHeight(); i += 500 ) {
-			for(int j = 0; j+500 < img.getWidth(); j += 500) {
-				BufferedImage bloque = img.getSubimage(i, j, 500, 500);
+		int i = 0; 
+		int j = 0;
+		
+		while( i + height <= img.getHeight() ) {
+			j = 0;
+			
+			while( j + width <= img.getWidth()) {
+				
+				BufferedImage bloque = img.getSubimage(j, i, width, height);
 				bloques.add(bloque);
+				j += 500;
 			}
+			
+			i += 500;
 		}
+		
 		return bloques;
 	}
 	
@@ -59,7 +69,7 @@ public class cargarImagen {
 		}
 		BufferedImage img = c.cargar(url);
 		
-		Vector<BufferedImage> bloques = c.getBloques(img);
+		Vector<BufferedImage> bloques = c.getBloques(img, 500, 500);
 		
 		int i = 0;
 		for(BufferedImage imagen: bloques) {
