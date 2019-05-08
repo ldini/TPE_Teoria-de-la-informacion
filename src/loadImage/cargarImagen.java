@@ -10,6 +10,8 @@ import java.net.URL;
 
 public class cargarImagen {
 	
+	
+	
 	public BufferedImage cargar(URL path) {
 		BufferedImage img = null;
 
@@ -58,11 +60,12 @@ public class cargarImagen {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		cargarImagen c = new cargarImagen();
+	
 		
 		URL url = null;
 		try {
 			System.out.println("downloading image....");
-			url = new URL("https://raw.githubusercontent.com/ldini/TPE_Teoria-de-la-informacion/master/bin/loadImage/marsSurface.bmp");
+			url = new URL("https://raw.githubusercontent.com/ldini/TPE_Teoria-de-la-informacion/master/marsSurface.bmp");
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,6 +80,14 @@ public class cargarImagen {
 			c.crearImagen(imagen,Integer.toString(i));
 			i++;
 		}
+		
+		
+		calculadorEntropia calculador = new calculadorEntropia();
+		
+		System.out.println("CON MEMORIA = "+calculador.getEntropiaConMemoria(bloques.firstElement()));;
+		System.out.println("SIN MEMORIA = "+calculador.getEntropiaSinMemoria(bloques.firstElement()));;
+		
+
 
 	}
 }
