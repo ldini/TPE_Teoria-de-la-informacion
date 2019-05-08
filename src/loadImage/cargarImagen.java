@@ -10,6 +10,8 @@ import java.net.URL;
 
 public class cargarImagen {
 	
+	
+	
 	public BufferedImage cargar(URL path) {
 		BufferedImage img = null;
 
@@ -58,6 +60,7 @@ public class cargarImagen {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		cargarImagen c = new cargarImagen();
+	
 		
 		URL url = null;
 		try {
@@ -78,9 +81,13 @@ public class cargarImagen {
 			i++;
 		}
 		
+		
 		calculadorEntropia calculador = new calculadorEntropia();
 		
-		double entropia = calculador.getEntropiaSinMemoria(bloques.firstElement());
-		System.out.println("entropia " + entropia + " ");
+		System.out.println("CON MEMORIA = "+calculador.getEntropiaConMemoria(bloques.firstElement()));;
+		System.out.println("SIN MEMORIA = "+calculador.getEntropiaSinMemoria(bloques.firstElement()));;
+		
+
+
 	}
 }
