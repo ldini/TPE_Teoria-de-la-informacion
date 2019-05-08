@@ -125,6 +125,31 @@ public class calculadorEntropia {
 			// TODO Auto-generated method stub
 	
 		}
+		
+		
+		public BufferedImage getBloqueMinEntropia(Vector<BufferedImage> v) {
+			BufferedImage bloqueSalida = null;
+			double entropiaMin = 0;
+			for(BufferedImage bloque: v) {
+				double entropiaActual = this.getEntropiaConMemoria(bloque);
+				if(entropiaActual < entropiaMin) {
+					bloqueSalida = bloque;
+				}
+			}
+			return bloqueSalida;
+		}		
+		
+		public BufferedImage getBloqueMaxEntropia(Vector<BufferedImage> v) {
+			BufferedImage bloqueSalida = null;
+			double entropiaMax = 0;
+			for(BufferedImage bloque: v) {
+				double entropiaActual = this.getEntropiaConMemoria(bloque);
+				if(entropiaActual > entropiaMax) {
+					bloqueSalida = bloque;
+				}
+			}
+			return bloqueSalida;
+		}
 
 }
 

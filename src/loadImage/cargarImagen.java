@@ -74,18 +74,23 @@ public class cargarImagen {
 		
 		Vector<BufferedImage> bloques = c.getBloques(img, 500, 500);
 		
+		calculadorEntropia calculador = new calculadorEntropia();
+		
 		int i = 0;
 		for(BufferedImage imagen: bloques) {
 			System.out.println("Iteracion "+i);
 			c.crearImagen(imagen,Integer.toString(i));
+			System.out.println("CON MEMORIA = "+calculador.getEntropiaConMemoria(imagen));
+			System.out.println("SIN MEMORIA = "+calculador.getEntropiaSinMemoria(imagen));
 			i++;
 		}
 		
+		BufferedImage mayor = calculador.getBloqueMaxEntropia(bloques);
+		BufferedImage menor = calculador.getBloqueMinEntropia(bloques);
 		
-		calculadorEntropia calculador = new calculadorEntropia();
+		System.out.print("bloque mayor " + calculador.getEntropiaConMemoria(mayor));
+		System.out.print("bloque menor " + calculador.getEntropiaConMemoria(menor));
 		
-		System.out.println("CON MEMORIA = "+calculador.getEntropiaConMemoria(bloques.firstElement()));;
-		System.out.println("SIN MEMORIA = "+calculador.getEntropiaSinMemoria(bloques.firstElement()));;
 		
 
 
